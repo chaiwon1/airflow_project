@@ -72,7 +72,6 @@ extract = PythonOperator(
     params = {
         'url':  Variable.get("csv_url")
     },
-    provide_context=True,
     dag = dag_second_assignment)
 
 transform = PythonOperator(
@@ -80,7 +79,6 @@ transform = PythonOperator(
     python_callable = transform,
     params = { 
     },  
-    provide_context=True,
     dag = dag_second_assignment)
 
 load = PythonOperator(
@@ -90,7 +88,6 @@ load = PythonOperator(
         'schema': 'keeyong',
         'table': 'name_gender'
     },
-    provide_context=True,
     dag = dag_second_assignment)
 
 extract >> transform >> load
