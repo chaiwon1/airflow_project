@@ -86,5 +86,4 @@ task = PythonOperator(
         params = {
             'url': "https://s3-geospatial.s3-us-west-2.amazonaws.com/name_gender.csv"
         },
-        provide_context=True,
 	dag = dag_second_assignment)
