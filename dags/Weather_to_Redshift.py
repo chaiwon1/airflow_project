@@ -38,7 +38,7 @@ def etl(**context):
         ret.append("('{}',{},{},{})".format(day, d["temp"]["day"], d["temp"]["min"], d["temp"]["max"]))
 
     cur = get_Redshift_connection()
-    insert_sql = """DELETE FROM keeyong.weather_forecast;INSERT INTO keeyong.weather_forecast VALUES """ + ",".join(ret)
+    insert_sql = """DELETE FROM stuartandmike30.weather_forecast;INSERT INTO stuartandmike30.weather_forecast VALUES """ + ",".join(ret)
     logging.info(insert_sql)
     try:
         cur.execute(insert_sql)
@@ -48,7 +48,7 @@ def etl(**context):
         raise
 
 """
-CREATE TABLE keeyong.weather_forecast (
+CREATE TABLE stuartandmike30.weather_forecast (
     date date,
     temp float,
     min_temp float,
@@ -59,8 +59,8 @@ CREATE TABLE keeyong.weather_forecast (
 
 dag = DAG(
     dag_id = 'Weather_to_Redshift',
-    start_date = datetime(2022,8,24), # 날짜가 미래인 경우 실행이 안됨
-    schedule_interval = '0 2 * * *',  # 적당히 조절
+    start_date = datetime(2022,1,1),
+    schedule_interval = '0 2 * * *',
     max_active_runs = 1,
     catchup = False,
     default_args = {

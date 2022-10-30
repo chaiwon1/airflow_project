@@ -79,7 +79,7 @@ def etl(**context):
         raise
 
 """
-CREATE TABLE keeyong.weather_forecast (
+CREATE TABLE stuartandmike30.weather_forecast (
     date date,
     temp float,
     min_temp float,
@@ -90,8 +90,8 @@ CREATE TABLE keeyong.weather_forecast (
 
 dag = DAG(
     dag_id = 'Weather_to_Redshift_v2',
-    start_date = datetime(2022,8,24), # 날짜가 미래인 경우 실행이 안됨
-    schedule_interval = '0 4 * * *',  # 적당히 조절
+    start_date = datetime(2022,1,1), 
+    schedule_interval = '0 4 * * *', 
     max_active_runs = 1,
     catchup = False,
     default_args = {
@@ -107,7 +107,7 @@ etl = PythonOperator(
     params = {
         "lat": 37.5665,
         "lon": 126.9780,
-        "schema": "keeyong",
+        "schema": "stuartandmike30",
         "table": "weather_forecast"
     },
     provide_context=True,

@@ -15,8 +15,8 @@ import json
 
 dag = DAG(
     dag_id = 'MySQL_to_Redshift',
-    start_date = datetime(2022,8,24), # 날짜가 미래인 경우 실행이 안됨
-    schedule_interval = '0 9 * * *',  # 적당히 조절
+    start_date = datetime(2022,10,1), 
+    schedule_interval = '0 9 * * *', 
     max_active_runs = 1,
     catchup = False,
     default_args = {
@@ -25,7 +25,7 @@ dag = DAG(
     }
 )
 
-schema = "keeyong"
+schema = "stuartandmike30"
 table = "nps"
 s3_bucket = "grepp-data-engineering"
 s3_key = schema + "-" + table
