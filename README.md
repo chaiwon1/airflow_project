@@ -46,4 +46,10 @@ Airflow의 MetastoreDB는 Postgres입니다.
   <li>그 뒤, DW인 Redshift로 다시 Load 한다.</li>
 </ul>
 
-<img alt="Untitled (1)" src="https://user-images.githubusercontent.com/95471902/198871869-d36f4725-2879-42f1-8aad-c2deb4f251e8.png">
+<ul>
+  <li>Full Refresh DAG : Weather_to_Redshift.py</li>
+  <li>Full Refresh DAG(clean S3 bucket ver.) : Weather_to_Redshift_v2.py </li>
+  <li>Incremental Update DAG : Weather_to_Redshift_v3.py</li>
+</ul>
+
+<img alt="Untitled (2)" src="https://user-images.githubusercontent.com/95471902/198873866-1715adac-c079-4f1b-a9c3-11be3bac8da2.png">
